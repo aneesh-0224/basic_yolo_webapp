@@ -1,6 +1,6 @@
 # basic_yolo_webapp
 This is the web part which helps you interact with the image cataloguer model
 
-Here the image which you wanna feed into the model first needs to be put inside the data folder.
-Then u can choose the image from the data folder in the form of the main page.
-Similar images will be shown in the 'show' path.
+It takes in an image as the input and stores it in the static/input folder.
+The model takes the input from the input folder and outputs the images in the static/output folder.
+All the images present in the output folder are then dispalyed on the web page.
