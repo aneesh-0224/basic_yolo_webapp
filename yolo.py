@@ -26,8 +26,8 @@ def home_page():
         #Since after calling the save_img function the the image is stored in static/input it can be used
         #as input for the model and the model can be instantiated here.and the output of the model can be 
         #put in the static/output folder.
-        print(app.root_path)
-        return render_template('show.html',path=app.root_path)
+        tags=['tag1','tag2','tag3','tag4','tag5']
+        return render_template('show.html',path=app.root_path,tags=tags)
     return render_template('homepage.html',form=form)
 
 

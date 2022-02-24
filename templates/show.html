@@ -4,7 +4,18 @@
 Images
 {% endblock %}
 {% block content%}
-    {%for i in range(2)%}
-    <img src="{{path}}\static\output\r{{i}}" alt="img">
-    {% endfor %}
+{%for i in range(2)%}
+<img src="{{path}}\static\output\r{{i}}" alt="img">
+{% endfor %}
+<br>
+<h1 class="mt-5 text-center">Tags</h1>
+<div class="container border border-dark rounded">
+    <div class="row mt-5 mb-5">
+        {% for tag in tags %}
+        <div class="col-sm">
+            <button class="btn btn-primary btn-lg">{{tag}}</button>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
