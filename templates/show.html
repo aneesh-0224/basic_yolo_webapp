@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>images</title>
-</head>
-<body>
-    {% for i in range(1)%}
-    <img src='C:\Users\Aneesh Kulkarni\web_dev\flask projects\web page for yolo\outputs\r1.jpeg' alt="image">
+{% extends 'base.html'%}
+
+{% block title%}
+Images
+{% endblock %}
+{% block content%}
+    {%for i in range(2)%}
+    <img src="{{path}}\static\output\r{{i}}" alt="img">
     {% endfor %}
-    
-</body>
-</html>
+{% endblock %}
