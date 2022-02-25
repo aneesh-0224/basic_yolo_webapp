@@ -4,9 +4,11 @@
 Images
 {% endblock %}
 {% block content%}
-{%for i in range(2)%}
-<img src="{{path}}\static\output\r{{i}}" alt="img">
+<div class="container mt-4">
+{% for i in range(4) %}
+<img src="{{user_imgs[i]}}" alt="img" width="200" height="300">
 {% endfor %}
+</div>
 <br>
 <h1 class="mt-5 text-center">Tags</h1>
 <div class="container border border-dark rounded">

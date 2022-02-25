@@ -5,7 +5,11 @@ from wtforms import SubmitField
 import os
 
 app=Flask(__name__)
+#static_folder='WEB PAGE FOR YOLO/static'
 app.config['SECRET_KEY']='568325235'
+
+picFolder= os.path.join('static','pics')
+app.config['UPLOAD_FOLDER']=picFolder
 
 class imgForm(FlaskForm):
     p_img = FileField(label='Image',validators=[FileAllowed(['jpeg','png'])])
@@ -27,7 +31,12 @@ def home_page():
         #as input for the model and the model can be instantiated here.and the output of the model can be 
         #put in the static/output folder.
         tags=['tag1','tag2','tag3','tag4','tag5']
-        return render_template('show.html',path=app.root_path,tags=tags)
+        pics=[]
+        for i in range(4):
+            file_img = f'r{i+1}.jpeg'
+            print(file_img)
+            pics.append(os.path.join(app.config['UPLOAD_FOLDER'],file_img))
+        return render_template('show.html',path=app.root_path,tags=tags,user_imgs=pics)
     return render_template('homepage.html',form=form)
 
 
