@@ -29,7 +29,7 @@ def home_page():
         img_file_name=save_img(form.p_img.data)
         #Since after calling the save_img function the the image is stored in static/input it can be used
         #as input for the model and the model can be instantiated here.and the output of the model can be 
-        #put in the static/output folder.
+        #put in the static/pics folder.
         tags=['tag1','tag2','tag3','tag4','tag5']
         pics=[]
         for i in range(4):
