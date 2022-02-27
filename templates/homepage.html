@@ -4,16 +4,35 @@
 Homepage
 {% endblock %}
 
-{% block content %}
-<div class="container mt-5 border border-dark">
-<form action="/" method="POST" enctype="multipart/form-data">
-    {{form.hidden_tag()}}
-    <div>
-        {{form.p_img.label(class='h1')}}
-        <br>
-        {{form.p_img(class='a')}}
-    </div>
-    {{form.submit(class='btn btn-info mt-5 mb-3')}}
-</form>
+{% block flash%}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="container">
+<ul class="mt-5">
+    {% for message in messages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
+    {% endfor %}
+</ul>
+</div>
+{% endif %}
+{% endwith %}
+{% endblock %}
+
+{% block content %}
+<div class="container  border border-dark mt-5">
+    <form action="/" method="POST" enctype="multipart/form-data">
+        {{form.hidden_tag()}}
+        <div>
+            {{form.p_img.label(class='h1')}}
+            <br>
+            {{form.p_img(class='a')}}
+        </div>
+        {{form.submit(class='btn btn-info mt-5 mb-3')}}
+    </form>
+</div>
+
 {% endblock %}
