@@ -1,5 +1,5 @@
 from asyncio.windows_events import NULL
-from flask import Flask, render_template, flash 
+from flask import Flask, render_template, flash, url_for
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField,FileAllowed
 from wtforms import SubmitField
@@ -42,10 +42,15 @@ def home_page():
             return render_template('show.html',path=app.root_path,tags=tags,user_imgs=pics)
         except:
             flash('Please put in an image in valid format','error')
-            return render_template('homepage.html',form=form)
+            return render_template('homepage2.html',form=form)
     if(form.p_img.data is not None):
         print(form.p_img.data)
         flash('Please select an image only','error')
-    return render_template('homepage.html',form=form)
+    return render_template('homepage2.html',form=form)
+
+
+@app.route('/about')
+def about_page():
+    return render_template('about.html')
 
 

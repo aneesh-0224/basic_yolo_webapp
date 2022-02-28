@@ -5,20 +5,29 @@ Images
 {% endblock %}
 
 {% block content%}
-<div class="container mt-4">
-{% for i in range(4) %}
-<img src="{{user_imgs[i]}}" alt="img" width="200" height="300">
-{% endfor %}
-</div>
-<br>
-<h1 class="mt-5 text-center">Tags</h1>
-<div class="container border border-dark rounded">
-    <div class="row mt-5 mb-5">
-        {% for tag in tags %}
-        <div class="col-sm">
-            <button class="btn btn-primary btn-lg">{{tag}}</button>
+
+<div class="container mt-4 pl-2">
+    <h1 class="text-center">Images</h1>
+    <div class="my-container pl-2">
+        {% for i in range(4) %}
+        <div class="col-sm-3">
+            <div class="card-body">
+                <img src="{{user_imgs[i]}}" alt="img">
+            </div>
         </div>
         {% endfor %}
     </div>
+</div>
+<br>
+<h1 class="mt-5 text-center">Tags</h1>
+
+<div class="my-container border border-dark rounded">
+        {% for tag in tags %}
+        <div class="col-sm-2 my-1">
+            <div class="card-body">
+                <button class="btn btn-primary btn-lg">{{tag}}</button>
+            </div>
+        </div>
+        {% endfor %}
 </div>
 {% endblock %}

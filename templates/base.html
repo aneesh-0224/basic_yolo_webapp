@@ -1,183 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}
-        {% endblock %}
-    </title>
-    <style>
-      h1 {
-        font-size: 4rem;
-      }
-      p {
-        font-size: 1.5rem;
-      }
-      body {
-        margin: 0;
-        font-family: 'Prompt', sans-serif;
-        color: white;
-        background: #202731;
-        overflow-x: hidden;
-      }
-  
-      section {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 400px;
-        padding-top: 100px;
-      }
-  
-      .blue {
-        background: #3c31dd;
-      }
-  
-      .red {
-        background: #dd3f31;
-      }
-  
-      .pink {
-        background: #ff0066;
-    
-      }
-  
-      .dark {
-        background: #0f0f10;
-      }
-  
-      /* Curved bg with plain CSS */
-  
-      .curve {
-        position: absolute;
-        height: 250px;
-        width: 100%;
-        bottom: 0;
-        text-align: center;
-      }
-  
-      .curve::before {
-        content: '';
-        display: block;
-        position: absolute;
-        border-radius: 100% 50%;
-        width: 55%;
-        height: 100%;
-        transform: translate(85%, 60%);
-        background-color: hsl(216, 21%, 16%);
-      }
-  
-      .curve::after {
-        content: '';
-        display: block;
-        position: absolute;
-        border-radius: 100% 50%;
-        width: 55%;
-        height: 100%;
-        background-color: #ff0066;
-        transform: translate(-4%, 40%);
-        z-index: -1;
-      }
-  
-      /* Bubble bg with plain CSS */
-  
-      .bubble::after {
-        content: '';
-        border-top-left-radius: 50% 100%;
-        border-top-right-radius: 50% 100%;
-        position: absolute;
-        bottom: 0;
-        z-index: -1;
-        width: 100%;
-        background-color: #0f0f10;
-        height: 85%;
-      }
-  
-      /* Curved bg with SVG via https://www.shapedivider.app/ */
-  
-      .wave {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-      }
-  
-      .wave svg {
-        position: relative;
-        display: block;
-        width: calc(103% + 1.3px);
-        height: 262px;
-      }
-  
-      .wave .shape-fill {
-        fill: hsl(240, 3%, 6%);
-      }
-  
-      /* SVG background image via https://haikei.app/ */
-  
-      .spacer {
-        aspect-ratio: 960/300;
-        width: 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-  
-      .layer1 {
-        background-image: url('./layer1.svg');
-      }
-      .layer2 {
-        background-image: url('./layer2.svg');
-      }
-  
-      .flip {
-        transform: rotate(180deg);
-      }
-  
-      /* Blobs SVG background image via https://haikei.app/ */
-  
-      .blob-motion {
-        position: absolute;
-        transform: translateY(-20%);
-        z-index: 0;
-      }
-  
-      .blob-content {
-        z-index: 1;
-      }
-  
-      .blobs {
-        width: 100%;
-        background: url('./blobs.svg') no-repeat bottom / cover;
-      }
-    </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}
+    {% endblock %}
+  </title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    .main-content {
+      width: 100vw;
+      min-height: 90vh;
+      padding-top: 5rem;
+
+      /* background: #5f2c82;  
+      background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);  
+      background: linear-gradient(to right, #49a09d, #5f2c82);  */
+
+      background: #5f2c82;
+      background: -webkit-linear-gradient(to bottom, #49a09d, #5f2c82);
+      background: linear-gradient(to bottom, #49a09d, #5f2c82);
+    }
+
+    .my-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .my-container img {
+      width: 200px;
+      height: 300px;
+    }
+  </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="/">Homepage <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">About</a>
-          </div>
-        </div>
-      </nav>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">&spades;Image Cataloguer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/">Homepage <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="/about">About</a>
+      </div>
+    </div>
+  </nav>
+  <main class="main-content">
     {% block flash %}
 
     {% endblock%}
-    {% block content %} 
+    {% block content %}
 
     {% endblock %}
-    <style>
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
