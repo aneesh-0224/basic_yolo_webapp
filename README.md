@@ -11,3 +11,12 @@ The cataloguer dataset must also be present in the folder.
 
 The notebook has also been included.(image cataloguer3).
 
+Commands to run the app-
+open the terminal and cd into this folder and type-
+$env:FLASK_APP='yolo.py'
+flask run
+
+To turn on debug mode type-
+$env:FLASK_APP='yolo.py'
+$env:FLASK_DEBUG=1
+flask run
